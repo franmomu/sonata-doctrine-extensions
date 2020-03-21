@@ -172,7 +172,7 @@ final class OptionsBuilder
      *     columnDefinition?: string
      * } $joinColumn
      */
-    public function addJoin(array $joinColumn): self
+    public function addJoinColumn(array $joinColumn): self
     {
         if (!\in_array($this->type, [self::MANY_TO_ONE, self::ONE_TO_ONE], true)) {
             throw new \RuntimeException(

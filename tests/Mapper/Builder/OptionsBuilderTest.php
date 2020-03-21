@@ -125,15 +125,15 @@ final class OptionsBuilderTest extends TestCase
             ->orphanRemoval();
     }
 
-    public function testAddJoin(): void
+    public function testAddJoinColumn(): void
     {
         $builder = OptionsBuilder::createOneToOne('groups', 'App\Entity\Group')
-            ->addJoin([
+            ->addJoinColumn([
                 'name' => 'parent_id',
                 'referencedColumnName' => 'id',
                 'onDelete' => 'CASCADE',
             ])
-            ->addJoin([
+            ->addJoinColumn([
                 'name' => 'another_parent_id',
                 'referencedColumnName' => 'id',
                 'onDelete' => 'CASCADE',
@@ -162,12 +162,12 @@ final class OptionsBuilderTest extends TestCase
         $this->expectException(\RuntimeException::class);
 
         OptionsBuilder::createOneToMany('groups', 'App\Entity\Group')
-            ->addJoin([
+            ->addJoinColumn([
                 'name' => 'parent_id',
                 'referencedColumnName' => 'id',
                 'onDelete' => 'CASCADE',
             ])
-            ->addJoin([
+            ->addJoinColumn([
                 'name' => 'another_parent_id',
                 'referencedColumnName' => 'id',
                 'onDelete' => 'CASCADE',
